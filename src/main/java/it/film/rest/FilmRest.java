@@ -35,7 +35,7 @@ public class FilmRest {
 	public ResponseEntity<String> inserisciFilm(@RequestBody Film f){
 		try {
 			fd.salva(f);
-			return new ResponseEntity<String>("Film inserito con successo!", HttpStatus.ACCEPTED);
+			return new ResponseEntity<String>("Film inserito con successo!", HttpStatus.OK);
 		} catch (Exception e) {
 			
 		} 
@@ -83,10 +83,10 @@ public class FilmRest {
 	
 	
 	@GetMapping
-	@ApiOperation(value = "Lista film", notes = "Visualizza una lista di tutti i film presenti in piattaforma")
+	@ApiOperation(value = "Lista film", notes = "Visualizza la lista di tutti i film presenti in piattaforma")
 	public ResponseEntity<List<Film>> getAllFilm(){
 		try {
-			return new ResponseEntity<List<Film>>(fd.trovaTutti(), HttpStatus.ACCEPTED);
+			return new ResponseEntity<List<Film>>(fd.trovaTutti(), HttpStatus.OK);
 		} 
 		catch (Exception e) {
 			return new ResponseEntity<List<Film>>((List<Film>)null, HttpStatus.BAD_REQUEST);
