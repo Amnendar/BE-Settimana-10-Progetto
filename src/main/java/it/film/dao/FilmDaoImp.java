@@ -113,10 +113,15 @@ private EntityManager em = null;
 	 *  @author Antonello Pagnozzi 
 	 *  @param  id = id del film da cercare
 	 *  @return  Film con l id corrispondente
+	 * 	@throws Exception messaggio di errore
 	 */
-	public Film trovaById(int id) {
-		
-		return getEm().find(Film.class, id);
+	public Film trovaById(int id) throws Exception {
+		Film trovato = getEm().find(Film.class, id);
+		if(trovato == null) {
+			throw new Exception("ERRORE! nessun film con questo id!");
+			
+		}
+		return trovato;
 	}
 
 }

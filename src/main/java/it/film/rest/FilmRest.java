@@ -31,7 +31,7 @@ public class FilmRest {
 	FilmDao fd = new FilmDaoImp();
 	
 	
-	@PostMapping
+	@PostMapping("/inserisci")
 	@ApiOperation(value = "Inserimento film", notes = "Permette di inserire un film in piattaforma")
 	public ResponseEntity<String> inserisciFilm(@RequestBody Film f){
 		try {
@@ -43,7 +43,7 @@ public class FilmRest {
 		return new ResponseEntity<String>("ERRORE! Inserimento film non riuscito!", HttpStatus.BAD_REQUEST);
 	}
 	
-	@PutMapping("/{id}")
+	@PutMapping("aggiorna/{id}")
 	@ApiOperation(value = "Aggiorna film", notes = "Aggiorna i dati di un determinato film")
 	public ResponseEntity<String> aggiornaFilm(@PathVariable int id, @RequestBody Film f){
 		f.setId(id);
@@ -58,7 +58,7 @@ public class FilmRest {
 	}
 	
 	
-	@DeleteMapping("/{id}")
+	@DeleteMapping("/cancella/{id}")
 	@ApiOperation(value = "Cancella film", notes = "Cancella il film dalla piattaforma")
 	public ResponseEntity<String> cancellaCittadino(@PathVariable int id){
 		try {
@@ -72,7 +72,7 @@ public class FilmRest {
 	}
 	
 	
-	@GetMapping("/{regista}")
+	@GetMapping("/regista/{regista}")
 	@ApiOperation(value = "Cerca film per regista", notes = "Restituisce tutti i film di un determinato regista")
 	public ResponseEntity<List<Film>> trovaPerRegista(@PathVariable String regista){
 		try {
@@ -83,7 +83,7 @@ public class FilmRest {
 	}
 	
 	
-	@GetMapping
+	@GetMapping("/tuttifilm")
 	@ApiOperation(value = "Lista film", notes = "Visualizza la lista di tutti i film presenti in piattaforma")
 	public ResponseEntity<List<Film>> getAllFilm(){
 		try {
@@ -95,6 +95,16 @@ public class FilmRest {
 	}
 	
 	
+	@GetMapping("/id/{id}")
+	@ApiOperation(value = "Cerca film per id", notes = "Permette di effettuare una ricerca film tramite l id")
+	public ResponseEntity<Film> getFilmById(@PathVariable int id){
+		try {
+			return new ResponseEntity<Film>(fd.trovaById(id), HttpStatus.OK);
+		} 
+		catch (Exception e) {
+			return new ResponseEntity<Film>((Film)null, HttpStatus.BAD_REQUEST);
+		}
+	}
 	
 	
 	

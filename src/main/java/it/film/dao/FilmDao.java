@@ -9,7 +9,7 @@ public interface FilmDao {
 	public void salva(Film f);
 	public void aggiorna(Film f) throws Exception;
 	public void cancella(int id);
-	public Film trovaById(int id);
+	public Film trovaById(int id) throws Exception;
 	public List<Film> trovaByRegista(String regista);
 	public List<Film> trovaTutti();
 	
