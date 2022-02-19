@@ -21,6 +21,7 @@ import it.film.dao.FilmDaoImp;
 import it.film.entity.Film;
 
 //link di accesso a Swagger http://localhost:8080/progettosettimana10-0.0.1-SNAPSHOT/swagger-ui.html
+//link di accesso a Postman http://localhost:8080/progettosettimana10-0.0.1-SNAPSHOT/film/
 
 @RestController
 @RequestMapping("/film")

@@ -67,7 +67,7 @@ private EntityManager em = null;
 	public void cancella(int id) {
 		try {
 			getEm().getTransaction().begin();
-			getEm().remove(getEm().find(Film.class, id)); //dobbiamo prima cercare il cittadino e su quello facciamo il remove
+			getEm().remove(getEm().find(Film.class, id)); 
 			
 				
 			} catch (Exception e) {
